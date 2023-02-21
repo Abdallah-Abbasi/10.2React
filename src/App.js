@@ -1,25 +1,50 @@
-import logo from './logo.svg';
+import React, { useRef } from 'react';
 import './App.css';
+import Prototype from './Componenets/Prototype.jpg';
+import Prototype2 from './Componenets/Prototype2.jpg';
+import Bully from './Componenets/Bully.jpg';
+import Bully2 from './Componenets/Bully2.jpg';
 
-function App() {
+function TwoImages() {
+  const bullyRef = useRef(null);
+  const prototypeRef = useRef(null);
+
+  const handleMouseEnter = (ref) => {
+    if (ref.current) {
+      ref.current.src = ref.current.dataset.color;
+    }
+  };
+
+  const handleMouseLeave = (ref) => {
+    if (ref.current) {
+      ref.current.src = ref.current.dataset.grayscale;
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <a href="https://steamunlocked.net/5-bully-scholarship-edition-free-v4-download/">
+        <img
+          src={Bully2}
+          data-grayscale={Bully2}
+          data-color={Bully}
+          onMouseEnter={() => handleMouseEnter(bullyRef)}
+          onMouseLeave={() => handleMouseLeave(bullyRef)}
+          ref={bullyRef}
+        />
+      </a>
+      <a href="https://steamunlocked.net/28-prototype-free-download/">
+        <img
+          src={Prototype2}
+          data-grayscale={Prototype2}
+          data-color={Prototype}
+          onMouseEnter={() => handleMouseEnter(prototypeRef)}
+          onMouseLeave={() => handleMouseLeave(prototypeRef)}
+          ref={prototypeRef}
+        />
+      </a>
     </div>
   );
 }
 
-export default App;
+export default TwoImages;
